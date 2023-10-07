@@ -1,11 +1,11 @@
 {
-  "name": "contentful-starter-gatsby-blog",
-  "description": "Contentful Gatsby Starter Blog",
+  "name": "mynote-blog",
+  "description": "The note of Moriya Ryota in friends.",
   "private": true,
   "version": "0.0.1",
-  "author": "Contentful <opensource@contentful.com>",
+  "author": "モリヤリョウタ <riotamoriya@gmail.com>",
   "bugs": {
-    "url": "https://github.com/contentful/starter-gatsby-blog/issues"
+    "url": "https://github.com/riotamoriya/mynote-blog"
   },
   "dependencies": {
     "@contentful/rich-text-plain-text-renderer": "^15.12.1",
@@ -43,7 +43,7 @@
     "url": "git+https://github.com/contentful/starter-gatsby-blog.git"
   },
   "scripts": {
-    "dev": "gatsby develop",
+    "dev": "gatsby develop --port 8080",
     "build": "gatsby build",
     "heroku-postbuild": "gatsby build",
     "serve": "gatsby serve",

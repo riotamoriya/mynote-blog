@@ -23,7 +23,7 @@ class BlogPostTemplate extends React.Component {
     )
     const plainTextBody = documentToPlainTextString(JSON.parse(post.body.raw))
     const { minutes: timeToRead } = readingTime(plainTextBody)
-    
+
     const options = {
       renderNode: {
         [BLOCKS.EMBEDDED_ASSET]: (node) => {
@@ -38,6 +38,9 @@ class BlogPostTemplate extends React.Component {
       },
     };
 
+    // <div dangerouslySetInnerHTML={{ __html: post.mapHtml.internal.content }}/>
+    
+// console.log(post.mapHtml.internal.content)
     return (
       <Layout location={this.props.location}>
         <Seo
@@ -56,10 +59,16 @@ class BlogPostTemplate extends React.Component {
             <time dateTime={post.rawDate}>{post.publishDate}</time> –{' '}
             {timeToRead} minute read
           </span>
+
           <div className={styles.article}>
             <div className={styles.body}>
               {post.body?.raw && renderRichText(post.body, options)}
             </div>
+            { post.mapHtml.internal.content 
+                ? <div dangerouslySetInnerHTML={{ __html: post.mapHtml.internal.content }}/> 
+                : <></>
+            }
+
             <Tags tags={post.tags} />
             {(previous || next) && (
               <nav>
@@ -97,6 +106,11 @@ export const pageQuery = graphql`
     $nextPostSlug: String
   ) {
     contentfulBlogPost(slug: { eq: $slug }) {
+      mapHtml {
+        internal {
+          content
+        }
+      }
       slug
       title
       author {
