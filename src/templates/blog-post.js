@@ -38,9 +38,7 @@ class BlogPostTemplate extends React.Component {
       },
     };
 
-    // <div dangerouslySetInnerHTML={{ __html: post.mapHtml.internal.content }}/>
     
-// console.log(post.mapHtml.internal.content)
     return (
       <Layout location={this.props.location}>
         <Seo
@@ -64,10 +62,10 @@ class BlogPostTemplate extends React.Component {
             <div className={styles.body}>
               {post.body?.raw && renderRichText(post.body, options)}
             </div>
-            { post.mapHtml.internal.content 
+            {/* { post.mapHtml.internal.content 
                 ? <div dangerouslySetInnerHTML={{ __html: post.mapHtml.internal.content }}/> 
                 : <></>
-            }
+            } */}
 
             <Tags tags={post.tags} />
             {(previous || next) && (
